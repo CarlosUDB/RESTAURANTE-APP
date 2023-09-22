@@ -22,7 +22,7 @@ export default function RegisterScreen (props){
     let loginStatus = 0;
     let registerStatus = 0;
 
-    //function to try to login into the api
+    //function to try to register
     Register = async () => {
         await fetch(API_URI + '/register', {
             method: 'POST',

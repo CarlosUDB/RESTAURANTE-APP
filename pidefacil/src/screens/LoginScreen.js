@@ -142,6 +142,7 @@ export default function LoginScreen (props){
                         email: resData.user.email,
                         address: resData.user.address,
                         user_type: resData.user.user_type,
+                        restaurant_id: resData.user.restaurant_id,
                         access_token: resData.access_token,
                         token_type: resData.token_type
                     }
@@ -192,6 +193,7 @@ export default function LoginScreen (props){
                         email: resData.user.email,
                         address: resData.user.address,
                         user_type: resData.user.user_type,
+                        restaurant_id: resData.user.restaurant_id,
                         access_token: resData.access_token,
                         token_type: resData.token_type
                     }

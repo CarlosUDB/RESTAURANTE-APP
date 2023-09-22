@@ -48,12 +48,16 @@ export default function AccountScreen(props) {
         <View>
             <Text style={{
                 textAlign: 'center',
-                marginTop: 200,
+                marginTop: 180,
+                fontSize: 24,
                 fontFamily: 'LibreBaskerville-Regular'
             }}>
-                Pantalla de cuenta {loggedUser.email}
+                {loggedUser.first_name + ' ' + loggedUser.last_name}
             </Text>
             
+            
+
+
             <BottomMenuUser
                 onPressFirst={() => goToScreen('Main')}
                 onPressSecond={() => goToScreen('')}
@@ -61,11 +65,18 @@ export default function AccountScreen(props) {
                 onPressFourth={() => goToScreen('Account')}
             />  
             
-            <View style={[loginStyles.btnTransparent, { marginTop: -100, marginLeft: 60 }]}>
+            <View style={[loginStyles.btnTransparent, { marginTop: -200, marginLeft: 60 }]}>
                 <TouchableOpacity onPress={Logout}>
                     <Text style={[loginStyles.btnTxt, { color: color.PRIMARY_COLOR }]}>Cerrar sesión</Text>
                 </TouchableOpacity>
             </View>
+
+            <View style={[loginStyles.btnMain, { marginTop: -200, marginLeft: 60 }]}>
+                <TouchableOpacity onPress={() => goToScreen('EditUser')}>
+                    <Text style={[loginStyles.btnTxt, { color: color.WHITE }]}>Editar cuenta</Text>
+                </TouchableOpacity>
+            </View>
+            
 
         </View>
     )
