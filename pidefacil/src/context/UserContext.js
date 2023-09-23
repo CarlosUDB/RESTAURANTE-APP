@@ -10,6 +10,7 @@ const initialState = {
         email: '',
         address: '',
         user_type: '',
+        restaurant_id: '',
         access_token: '',
         token_type: '',
     },

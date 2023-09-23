@@ -6,6 +6,7 @@ import LoginScreen from '@screens/LoginScreen'
 import MainScreen from '@screens/MainScreen'
 import AccountScreen from '@screens/AccountScreen'
 import RegisterScreen from '@screens/RegisterScreen'
+import EditUserScreen from '@screens/EditUserScreen'
 
 const AppNavigation = createStackNavigator({
     Splash: {
@@ -34,6 +35,12 @@ const AppNavigation = createStackNavigator({
     },
     Register: {
         screen: RegisterScreen,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    EditUser: {
+        screen: EditUserScreen,
         navigationOptions: {
             headerShown: false
         }
