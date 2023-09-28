@@ -16,7 +16,7 @@ export default function RegisterScreen(props) {
     const [first_name, setFirstName] = useState(loggedUser.first_name);
     const [last_name, setLastName] = useState(loggedUser.last_name);
     const [email, setEmail] = useState(loggedUser.email);
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('pidefacil');
     const [address, setAddress] = useState(loggedUser.address);
 
 
@@ -89,12 +89,6 @@ export default function RegisterScreen(props) {
                     <MyTextInput keyboardType='email-address' placeholder='Correo electrónico' image='at' value={email} onChangeText={(value => setEmail(value))} />
 
                     <MyTextInput keyboardType='default' placeholder='Dirección de entrega' image='location-arrow' value={address} onChangeText={(value => setAddress(value))} />
-
-
-
-                    <MyTextInput keyboardType={null} secureTextEntry={true} placeholder='Contraseña' image='lock' value={password} onChangeText={(value => setPassword(value))} />
-
-
 
                     <View style={loginStyles.btnMain}>
                         <TouchableOpacity onPress={Update}>

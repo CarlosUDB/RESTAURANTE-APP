@@ -11,6 +11,7 @@ const initialState = {
         address: '',
         user_type: '',
         restaurant_id: '',
+        googleAccount: '',
         access_token: '',
         token_type: '',
     },

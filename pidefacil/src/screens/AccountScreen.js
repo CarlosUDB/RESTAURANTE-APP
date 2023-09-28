@@ -13,7 +13,7 @@ export default function AccountScreen(props) {
     const loggedUser = login.user;
 
     let status = 0;
-    
+
     //function to try to login into the api
     Logout = async () => {
 
@@ -44,6 +44,15 @@ export default function AccountScreen(props) {
         });
     }
 
+    editUserForm=()=>{
+        if(loggedUser.googleAccount == 'google'){
+            console.log('SI')
+            goToScreen('EditGoogleUser')
+        }else{
+            goToScreen('EditUser')
+        }
+    }
+
     return (
         <View>
             <Text style={{
@@ -72,7 +81,7 @@ export default function AccountScreen(props) {
             </View>
 
             <View style={[loginStyles.btnMain, { marginTop: -200, marginLeft: 60 }]}>
-                <TouchableOpacity onPress={() => goToScreen('EditUser')}>
+                <TouchableOpacity onPress={editUserForm}>
                     <Text style={[loginStyles.btnTxt, { color: color.WHITE }]}>Editar cuenta</Text>
                 </TouchableOpacity>
             </View>
