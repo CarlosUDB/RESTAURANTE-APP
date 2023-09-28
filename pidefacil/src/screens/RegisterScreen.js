@@ -93,7 +93,9 @@ export default function RegisterScreen (props){
                         last_name: resDataLogin.user.last_name,
                         email: resDataLogin.user.email,
                         address: resDataLogin.user.address,
-                        address: resDataLogin.user.user_type,
+                        user_type: resDataLogin.user.user_type,
+                        restaurant_id: resDataLogin.user.restaurant_id,
+                        googleAccount: resDataLogin.user.googleAccount,
                         access_token: resDataLogin.access_token,
                         token_type: resDataLogin.token_type
                     }

@@ -7,7 +7,7 @@ export default function MainScreen(props) {
     
     const [login, loginAction] = useContext(UserContext)    
     const loggedUser = login.user;
-    //console.log(JSON.stringify(loggedUser));
+    console.log(JSON.stringify(loggedUser));
     //here make an if loggedUser.user_type == 'client' show the client/user menu and the else should return the restaurants manager menu (another component)
     return (
         <View>

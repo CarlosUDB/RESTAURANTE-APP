@@ -91,7 +91,8 @@ export default function LoginScreen (props){
                     "email": googleEmail,
                     "password": 'pidefacil',
                     "address": '',
-                    "user_type": "client"
+                    "user_type": "client",
+                    "googleAccount": "google"
                 })
             }).then(resp => {
                 registerStatus = resp.status;
@@ -100,6 +101,7 @@ export default function LoginScreen (props){
             }).then(resData => {
                 //handling status        
                 if (registerStatus == 200) {
+                    
                     LoginAfterGoogle();
                 }
 
@@ -143,6 +145,7 @@ export default function LoginScreen (props){
                         address: resData.user.address,
                         user_type: resData.user.user_type,
                         restaurant_id: resData.user.restaurant_id,
+                        googleAccount: resData.user.googleAccount,
                         access_token: resData.access_token,
                         token_type: resData.token_type
                     }
@@ -194,6 +197,7 @@ export default function LoginScreen (props){
                         address: resData.user.address,
                         user_type: resData.user.user_type,
                         restaurant_id: resData.user.restaurant_id,
+                        googleAccount: resData.user.googleAccount,
                         access_token: resData.access_token,
                         token_type: resData.token_type
                     }
