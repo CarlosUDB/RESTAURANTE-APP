@@ -46,8 +46,8 @@ _DPS104 G04T_
 
 * [Tablero en Trello](https://trello.com/b/kobSdaYN/restaurante-app)
 * [Enlace a Mockups](https://drive.google.com/file/d/1ua9Dh-KgO64fbn6QyFZ2VNM9vCxBHcFT/view?usp=sharing)
-* [Manual de usuario](https://drive.google.com/file/d/1ayZSNptW8Pskerg0n7BQ6lAQXSfMYFj3/view?usp=sharing)
-* [Manual técnico](https://drive.google.com/file/d/1Zrwh4ya_P2FM6FLWEOfiq95In2ivtasr/view?usp=sharing)
+* [Manual de Usuario](https://drive.google.com/file/d/1ayZSNptW8Pskerg0n7BQ6lAQXSfMYFj3/view?usp=drive_link)
+* [Manual Técnico](https://drive.google.com/file/d/1Zrwh4ya_P2FM6FLWEOfiq95In2ivtasr/view?usp=sharing)
 
 ## Licencia 📄
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licencia Creative Commons Atribución 4.0 Internacional</a>   
