@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { loginStyles } from '@styles/styles'
+import { loginStyles, estilo } from '@styles/styles'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { UserContext } from '@context/UserContext'
 import BottomMenuUser from '@components/BottomMenuUser'
@@ -44,49 +44,46 @@ export default function AccountScreen(props) {
         });
     }
 
-    editUserForm=()=>{
-        if(loggedUser.googleAccount == 'google'){
-            console.log('SI')
+    editUserForm = () => {
+        if (loggedUser.googleAccount == 'google') {
             goToScreen('EditGoogleUser')
-        }else{
+        } else {
             goToScreen('EditUser')
         }
     }
 
     return (
-        <View>
-            <Text style={{
-                textAlign: 'center',
-                marginTop: 180,
-                fontSize: 24,
-                fontFamily: 'LibreBaskerville-Regular'
-            }}>
-                {loggedUser.first_name + ' ' + loggedUser.last_name}
-            </Text>
-            
-            
-
-
-            <BottomMenuUser
-                onPressFirst={() => goToScreen('Main')}
-                onPressSecond={() => goToScreen('')}
-                onPressThird={() => goToScreen('')}
-                onPressFourth={() => goToScreen('Account')}
-            />  
-            
-            <View style={[loginStyles.btnTransparent, { marginTop: -200, marginLeft: 60 }]}>
-                <TouchableOpacity onPress={Logout}>
-                    <Text style={[loginStyles.btnTxt, { color: color.PRIMARY_COLOR }]}>Cerrar sesión</Text>
-                </TouchableOpacity>
+        <View style={estilo.body}>
+            <View style={estilo.header}>
+                <Text style={estilo.textoTitulo} >Perfil de usuario.</Text>
             </View>
+            <View style={estilo.contenidoUser}>
+                <View>
+                    <Text style={estilo.textoTitulo2}>{loggedUser.first_name + ' ' + loggedUser.last_name}</Text>
+                </View>
+                <View style={estilo.botonesEditar}>
+                    <View style={loginStyles.btnTransparent}>
+                        <TouchableOpacity onPress={editUserForm}>
+                            <Text style={[loginStyles.btnTxt, { color: color.PRIMARY_COLOR }]}>Editar cuenta</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={loginStyles.btnMain}>
+                        <TouchableOpacity onPress={Logout}>
+                            <Text style={[loginStyles.btnTxt, { color: color.WHITE }]}>Cerrar sesión</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
 
-            <View style={[loginStyles.btnMain, { marginTop: -200, marginLeft: 60 }]}>
-                <TouchableOpacity onPress={editUserForm}>
-                    <Text style={[loginStyles.btnTxt, { color: color.WHITE }]}>Editar cuenta</Text>
-                </TouchableOpacity>
+
             </View>
-            
-
+            <View style={estilo.sections}>
+                <BottomMenuUser
+                    onPressFirst={() => goToScreen('Main')}
+                    onPressSecond={() => goToScreen('')}
+                    onPressThird={() => goToScreen('')}
+                    onPressFourth={() => goToScreen('Account')}
+                />
+            </View>
         </View>
     )
 

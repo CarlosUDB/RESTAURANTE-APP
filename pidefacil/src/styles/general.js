@@ -8,7 +8,11 @@ const imageBackgroundStyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.BACKGROUND
-    }
+    }, 
+    contenedor:{
+        flex: 1,
+    },
+
 })
 
 export { imageBackgroundStyle }

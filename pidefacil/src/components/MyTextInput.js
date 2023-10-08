@@ -20,7 +20,7 @@ export default function MyTextInput(props) {
       leftIconContainerStyle={{ marginLeft: 0 }}
       leftIcon={<Icon size={24} color={color.PRIMARYCOLOR}
         type={'font-awesome'} name={props.image} />}
-      
+
       errorStyle={{ color: color.RED }}
       errorMessage={(props.bolError) ? props.strError : ''}
       editable={props.editable}

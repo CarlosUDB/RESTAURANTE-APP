@@ -86,7 +86,7 @@ export default function RegisterScreen(props) {
 
                     <MyTextInput keyboardType='default' placeholder='Apellidos' image='user' value={last_name} onChangeText={(value => setLastName(value))} />
 
-                    <MyTextInput keyboardType='email-address' placeholder='Correo electrónico' image='at' value={email} onChangeText={(value => setEmail(value))} />
+                    <MyTextInput keyboardType='email-address' placeholder='Correo electrónico' image='at' value={email} onChangeText={(value => setEmail(value))} editable={false}/>
 
                     <MyTextInput keyboardType='default' placeholder='Dirección de entrega' image='location-arrow' value={address} onChangeText={(value => setAddress(value))} />
 
