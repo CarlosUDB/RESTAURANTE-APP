@@ -4,11 +4,11 @@ _Creación de una aplicación de pedidos y entregas de comida para restaurantes_
 
 ## Autores ✒️
 _DPS104 G04T_
-***Carlos Daniel Cárcamo Pérez**
-***Byron Antonio Méndez Hernández**
-***Oscar Steven García Menjívar**
-***German Alexander Meléndez Serrano**
-***Ángel Alejandro Rodríguez Sánchez**
+* **Carlos Daniel Cárcamo Pérez**
+* **Byron Antonio Méndez Hernández**
+* **Oscar Steven García Menjívar**
+* **German Alexander Meléndez Serrano**
+* **Ángel Alejandro Rodríguez Sánchez**
 
 ## Enlaces de interés 👀
 
