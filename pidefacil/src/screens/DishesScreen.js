@@ -85,10 +85,10 @@ export default function DishesScreen(props) {
                 </ScrollView>
             </View>
             <View style={estilo.sections}>
-                <BottomMenuUser
+            <BottomMenuUser
                     onPressFirst={() => goToScreen('Main')}
-                    onPressSecond={() => goToScreen('')}
-                    onPressThird={() => goToScreen('')}
+                    onPressSecond={() => goToScreen('Orders')}
+                    onPressThird={() => goToScreen('FinalOrder')}
                     onPressFourth={() => goToScreen('Account')}
                 />
             </View>

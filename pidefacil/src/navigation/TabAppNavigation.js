@@ -9,6 +9,8 @@ import color from '@styles/colors'
 
 import MainScreen from '@screens/MainScreen'
 import AccountScreen from '@screens/AccountScreen'
+import OrderScreen from '@screens/OrderScreen'
+import FinalOrderScreen from '@screens/FinalOrderScreen'
 
 //menu
 const Tab = createBottomTabNavigator();
@@ -17,6 +19,8 @@ const Tab = createBottomTabNavigator();
 
 
 const mainName = "Main";
+const orderName = "Orders";///
+const finalOrderName = "FinalOrder";///
 const accountName = "Account";
 
 export default function () {
@@ -36,6 +40,15 @@ export default function () {
                                 iconName = focused ? 'person-circle-outline' : 'person-circle-outline';
 
                             }
+                            else if (rn === orderName) {
+                                iconName = focused ? 'menu-outline' : 'menu-outline';
+
+                            }
+                            else if (rn === finalOrderName) {
+                                iconName = focused ? 'shopping-bag' : 'shopping-bag';
+
+                            }
+            
 
                             return <Ionicons name={iconName} size={size} color={color} />;
                         },
@@ -49,6 +62,8 @@ export default function () {
 
                     <Tab.Screen name={mainName} component={MainScreen} />
                     <Tab.Screen name={accountName} component={AccountScreen} />
+                    <Tab.Screen name={orderName} component={OrderScreen} />
+                    <Tab.Screen name={finalOrderName} component={FinalOrderScreen} />
 
                 </Tab.Navigator>
             </NavigationContainer>
