@@ -93,10 +93,11 @@ export default function MainScreen(props) {
             <View style={estilo.sections}>
 
                 <BottomMenuUser
-                    onPressFirst={() => goToScreen('Main')}
-                    onPressSecond={() => goToScreen('')}
-                    onPressThird={() => goToScreen('')}
-                    onPressFourth={() => goToScreen('Account')}
+                       onPressFirst={() => goToScreen('Main')}
+                       onPressSecond={() => goToScreen('Orders')}
+                       onPressThird={() => goToScreen('FinalOrder')}
+                       onPressFourth={() => goToScreen('Account')}
+   
                 />
             </View>
 

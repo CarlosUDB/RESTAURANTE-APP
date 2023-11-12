@@ -10,6 +10,9 @@ import EditUserScreen from '@screens/EditUserScreen'
 import EditGoogleUserScreen from '@screens/EditGoogleUserScreen'
 import DishesScreen from '@screens/DishesScreen'
 import DetailDishScreen from '@screens/DetailDishScreen'
+import OrderScreen from '@screens/OrderScreen'
+import FinalOrderScreen from '@screens/FinalOrderScreen'
+import DetailFinalOrderScreen from '@screens/DetailFinalOrderScreen'
 
 const AppNavigation = createStackNavigator({
     Splash: {
@@ -66,6 +69,25 @@ const AppNavigation = createStackNavigator({
             headerShown: false
         }
     },
+    DetailFinalOrder: {
+        screen: DetailFinalOrderScreen,
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    Orders: {
+        screen: OrderScreen,/////////////////
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+    FinalOrder: {
+        screen: FinalOrderScreen,/////////////////
+        navigationOptions: {
+            headerShown: false
+        }
+    },
+
 
 })
 

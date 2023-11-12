@@ -4,32 +4,22 @@ import { Card } from 'react-native-elements'
 import { UserContext } from '@context/UserContext'
 import BottomMenuUser from '@components/BottomMenuUser'
 import { API_URI, API_IMG } from '@config/GlobalVars'
-import { useDebugValue } from 'react'
 import { Ionicons } from 'react-native-vector-icons'
 import color from '@styles/colors'
-import colors from '../styles/colors'
-import { estilo, platilloStyle } from '@styles/styles'
+import { estilo, pedidoStyle } from '@styles/styles'
+import { orderStyle } from '../styles/styles'
 
-export default function DishesScreen(props) {
-
-
-
+export default function FinalOrderScreen(props) {
     const [login, loginAction] = useContext(UserContext)
-
     const loggedUser = login.user;
-    //console.log(JSON.stringify(loggedUser));
-    //here make an if loggedUser.user_type == 'client' show the client/user menu and the else should return the restaurants manager menu (another component)
-    //List restaurants
-    const [dishes, setDishes] = useState([]);
+    const [finalOrders, setFinalOrder] = useState([]);
     
-
-    let restaurant_id = props.navigation.state.params;
 
     useEffect(() => {
         (async function () {
             try {
                 //Retrieving dishes info
-                const response = await fetch(API_URI + '/dishes/restaurant/' + restaurant_id, {
+                const response = await fetch(API_URI + '/major-orders/by-user-id/' + loggedUser.id, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -38,7 +28,7 @@ export default function DishesScreen(props) {
                     },
                 });
                 const data = await response.json();
-                setDishes(data); 
+                setFinalOrder(data); 
                 //console.log(dishes);   
 
             } catch (error) {
@@ -46,33 +36,50 @@ export default function DishesScreen(props) {
             }
         })();
     }, []);
-    displayDetails = (dato) =>{
-        goToScreen('DetailDishes', dato)
+     displayDetails = (dato) =>{
+         goToScreen('DetailFinalOrder', dato)
+    }
+    //Configurando formato de fecha
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+        const formattedDate = new Date(dateString).toLocaleDateString('es-ES', options);
+        return formattedDate;
     }
 
     return (
         <View style={estilo.body}>
             <View style={estilo.header}>
+            <View style={estilo.icon}>
+                    <Ionicons 
+                        size={34}
+                        name="menu-outline"
+                        color={color.PRIMARY_COLOR}
+                    />
+                </View>
                 <View style={estilo.titulo}>
-                    <Text style={estilo.textoTitulo}>¡Pide lo que quieras!</Text>
+                    <Text style={estilo.textoTitulo}>Pedidos</Text>
                 </View>
             </View>
             <View style={estilo.contenido}>
+            {finalOrders.length === 0 ? (
+                    <View style={orderStyle.noOrdersContainer}>
+                        <Text style={orderStyle.noOrdersText}>No posees pedidos</Text>
+                    </View>
+                ) : (
                 <ScrollView>
                     <View style={estilo.pack}>
                         {
-                            dishes.map((item, key) => (
+                            finalOrders.map((item, key) => (
                                 <View key={key}>
-                                    <TouchableHighlight onPress={()=>displayDetails(item.id)}>
+                                    <TouchableHighlight onPress={()=>displayDetails(item.id,key + 1)}>
                                         <View>
                                             <Card>
-                                                <View style={platilloStyle.individual}>
-                                                    <View style={platilloStyle.imgPlatillo}>
-                                                        <Image source={{ uri: API_IMG + item.picture }} style={{ width: '100%', height: '100%' }}/>
-                                                    </View>
-                                                    <View style={platilloStyle.infoPlatillo}>
-                                                        <Text style={platilloStyle.nombre}>{item.name}</Text>
-                                                        <Text style={platilloStyle.precio}>$ {item.price}</Text>
+                                                <View style={pedidoStyle.individual}>
+
+                                                    <View style={pedidoStyle.infoPedido}>
+                                                        <Text style={pedidoStyle.nombre}>Pedido Nº: {key + 1}</Text>
+                                                        <Text style={pedidoStyle.detalles}>Fecha:{formatDate(item.updated_at)}</Text>
+                                                        <Text style={pedidoStyle.detalles}>Estado: {item.status === 'completed' ? 'Completado' : item.status === 'in_progress' ? 'En progreso' : item.status}</Text>
                                                     </View>
                                                 </View>
                                             </Card>
@@ -83,9 +90,10 @@ export default function DishesScreen(props) {
                         }
                     </View>
                 </ScrollView>
+                )}
             </View>
             <View style={estilo.sections}>
-            <BottomMenuUser
+                <BottomMenuUser
                     onPressFirst={() => goToScreen('Main')}
                     onPressSecond={() => goToScreen('Orders')}
                     onPressThird={() => goToScreen('FinalOrder')}
@@ -99,7 +107,7 @@ export default function DishesScreen(props) {
         //const {id} = data.params;
         console.log(data);
         //console.log(props);
-        props.navigation.navigate(routeName, data)
+        props.navigation.navigate(routeName,data);
 
     }
 

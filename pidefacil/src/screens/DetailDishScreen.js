@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Text, View, Image, ScrollView, TouchableOpacity, StyleSheet, TouchableHighlight } from 'react-native'
+import { Text, View, Image, ScrollView, TouchableOpacity, StyleSheet, TouchableHighlight, ToastAndroid } from 'react-native'
 import { Button, Card } from 'react-native-elements'
 import { UserContext } from '@context/UserContext'
 import BottomMenuUser from '@components/BottomMenuUser'
 import { API_URI, API_IMG } from '@config/GlobalVars'
 import { useDebugValue } from 'react'
 import { Ionicons } from 'react-native-vector-icons'
+import Snackbar from 'react-native-snackbar'
 import color from '@styles/colors'
 import colors from '../styles/colors'
 import { estilo, detallePlatilloStyle } from '@styles/styles'
@@ -17,10 +18,11 @@ export default function DetailDishScreen(props) {
     const [dish, setDish] = useState();
     const loggedUser = login.user;
     let dish_id = props.navigation.state.params;
+    const [cantidad, setCantidad] = useState('');
+    ///////////////////
     useEffect(() => {
         (async function () {
             try {
-                //dasdasd
                 const response = await fetch(API_URI + '/dishes/' + dish_id, {
                     method: 'GET',
                     headers: {
@@ -31,9 +33,6 @@ export default function DetailDishScreen(props) {
                 });
                 const { dish } = await response.json();
                 setDish(dish);
-
-
-
             } catch (error) {
                 console.log(error);
             }
@@ -41,14 +40,44 @@ export default function DetailDishScreen(props) {
     }, []);
 
     console.log('Hola ', dish);
+    //Agregando el platillo
+    const agregarPlatillo = async () => {
+        const requestData = {
+            dish_id: dish_id,
+            quantity: cantidad,
+        };
 
+        try {
+            const response = await fetch(API_URI + `/orders/${loggedUser.id}`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + loggedUser.access_token,
+                },
+                body: JSON.stringify(requestData),
+            });
+
+            if (response.status === 200) {
+                console.log('Platillo agregado a orden');
+                Snackbar.show({
+                    text: 'Platillo agregado a Orden',
+                    duration: Snackbar.LENGTH_SHORT,
+                })
+                props.navigation.goBack();//Regresando a la screen anterior
+            } else {
+                console.log('Error de servidor');
+            }
+        } catch (error) {
+            console.error('Error de red:', error);
+        }
+    };
+    ////////////////////
     return (
         <View style={estilo.body}>
             <View style={detallePlatilloStyle.contenido}>
                 <ScrollView>
                     <View>
-
-
                         {dish && <View >
                             <TouchableHighlight>
                                 <View>
@@ -63,27 +92,28 @@ export default function DetailDishScreen(props) {
                                     <View style={detallePlatilloStyle.botones}>
                                         <View style={detallePlatilloStyle.cantidad}>
                                             <Text style={detallePlatilloStyle.textoCantidad}>Cantidad: </Text>
-                                            <TextInput placeholder='ej. 3' keyboardType='numeric' style={{backgroundColor: color.BACKGROUND, width: 150, }}/>
+                                            <TextInput placeholder='ej. 3' keyboardType='numeric' style={{ backgroundColor: color.BACKGROUND, width: 150, }}
+                                                value={cantidad} onChangeText={setCantidad}
+                                            />
                                         </View>
                                         <View style={detallePlatilloStyle.agregar}>
-                                            <TouchableHighlight style={detallePlatilloStyle.btnAgregar}>
-                                                <Text style={{color:'white', fontSize: 25, textAlign: 'center'}}>Agregar</Text>
+                                            <TouchableHighlight style={detallePlatilloStyle.btnAgregar}
+                                                onPress={agregarPlatillo}>
+                                                <Text style={{ color: 'white', fontSize: 25, textAlign: 'center' }}>Agregar</Text>
                                             </TouchableHighlight>
                                         </View>
                                     </View>
                                 </View>
                             </TouchableHighlight>
                         </View>}
-
-
                     </View>
                 </ScrollView>
             </View>
             <View style={detallePlatilloStyle.sections}>
                 <BottomMenuUser
                     onPressFirst={() => goToScreen('Main')}
-                    onPressSecond={() => goToScreen('')}
-                    onPressThird={() => goToScreen('')}
+                    onPressSecond={() => goToScreen('Orders')}
+                    onPressThird={() => goToScreen('FinalOrder')}
                     onPressFourth={() => goToScreen('Account')}
                 />
             </View>

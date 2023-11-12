@@ -77,6 +77,9 @@ const estilo = StyleSheet.create({
     icon: {
         //backgroundColor: 'black',
     },
+    iconBack: {
+
+    },
     titulo: {
         //backgroundColor: 'white',
         marginLeft: 15,
@@ -114,6 +117,9 @@ const estilo = StyleSheet.create({
     },
     textoTitulo2: {
         fontSize: 25,
+        marginLeft: 30,
+        marginRight: 58,
+        textAlign:'center',
         fontFamily: 'LibreBaskerville-Regular',
 
     },
@@ -218,4 +224,116 @@ const detallePlatilloStyle = StyleSheet.create({
     },
 
 })
-export { loginStyles, splashStyles, estilo, platilloStyle, detallePlatilloStyle }
+
+
+/****** ORDEN *******/
+const orderStyle = StyleSheet.create({
+    individual: {
+        flexDirection: 'row',
+    },
+    imgPlatillo: {
+        //backgroundColor:'teal',
+        width: 100,
+        height: 100,
+        marginRight: 10,
+    },
+    infoPlatillo: {
+        //backgroundColor: 'navy',
+        flex: 1,
+        padding: 15,
+        justifyContent: 'space-around',
+
+    },
+    nombre: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 19,
+        fontWeight: 'bold',
+    },
+    nombrePedido: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign:'right',
+    },
+    cantidadPedido: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign:'right',
+    },
+    subtotal: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 15,
+        fontWeight: 'bold',
+        textAlign:'right',
+    },
+    precio: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 15,
+    },
+
+    total: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 20,
+    },
+    totalCancelado: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 22,
+        marginRight: 10,
+        marginBottom: 20,
+    },
+    btnAgregarOrden:{
+        width: 280,
+        marginTop: 40,
+        marginBottom: 20,
+        backgroundColor: color.PRIMARY_COLOR,
+        borderRadius: 60,
+        height: 40
+    },
+    totalContainer: {
+        alignItems: 'flex-end', 
+        paddingRight: 15, 
+        marginTop: 40, 
+    },
+
+    centeredContainer: {
+        alignItems: 'center', 
+        marginTop: 15, 
+    },
+    noOrdersContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    noOrdersText: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 18,
+        textAlign: 'center',
+        color: color.PRIMARY_COLOR, 
+    },
+
+})
+/****** PLATILLOS *******/
+const pedidoStyle = StyleSheet.create({
+    individual: {
+        flexDirection: 'row',
+    },
+
+    infoPedido: {
+        width: '70%',
+        padding: 15,
+        justifyContent: 'space-around',
+
+    },
+    nombre: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 25,
+        marginBottom:10,
+    },
+    detalles: {
+        fontFamily: 'LibreBaskerville-Regular',
+        fontSize: 15,
+    },
+})
+
+export { loginStyles, splashStyles, estilo, platilloStyle, detallePlatilloStyle, orderStyle, pedidoStyle }
