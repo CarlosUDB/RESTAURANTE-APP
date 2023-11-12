@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "pidefacil",
+    "slug": "pidefacil",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "pidefacil"
+}
